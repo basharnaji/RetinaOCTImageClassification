@@ -1,9 +1,8 @@
 branch-defaults:
   default:
-    environment: null
-    group_suffix: null
+    environment: OctClf
 global:
-  application_name: oct_clf
+  application_name: OctClf
   branch: null
   default_ec2_keyname: null
   default_platform: Python 3.7
