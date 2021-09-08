@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import cv2
 import os
 
@@ -59,10 +60,9 @@ def plot_category(img):
     Args:
         img [jpg]: image file
     """
-    #fimage = img.read()
-    #npimg = np.fromstring(fimage, np.uint8)
-    #read_img = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
-    read_img = cv2.imdecode(np.fromstring(img.read(), np.uint8), cv2.IMREAD_COLOR)
+
+    read_img = mpimg.imread(img)
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(ROOT_DIR + '/static/images/output.png')
-    plt.imsave(path, read_img)
+    print (path)
+    plt.imsave(path, read_img, cmap='gray')

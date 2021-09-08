@@ -20,6 +20,6 @@ def eye_disease():
         # Get category of prediction
         category = get_category(img=file)
         # Plot the category
-        #plot_category(file)
+        plot_category(img=file)
         # Render the result template
         return render_template('result.html', category=category)
