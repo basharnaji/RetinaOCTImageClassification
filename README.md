@@ -1,7 +1,7 @@
 
 ![Eye title graphic](/images/eye_title_graphic.JPG)
 
-# DeeDeep Learning-based OCT image classification
+# Deep Learning-based OCT image classification
 
 
 **This work is a group industrial project, considered as final assignment for FourthBrain Machine Learning Engineer program.**
