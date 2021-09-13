@@ -72,7 +72,7 @@ Challenges in OCT image analysis:
 ## 📊 Initial data
 
 - [Kaggle OCT dataset](https://www.kaggle.com/paultimothymooney/kermany2018),
-- [OCT Canada dataaset(https://dataverse.scholarsportal.info/dataverse/OCTID).
+- [OCT Canada dataaset](https://dataverse.scholarsportal.info/dataverse/OCTID).
 
 ### Basic data summary
 
