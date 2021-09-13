@@ -46,7 +46,7 @@ Challenges in OCT image analysis:
 ## ⚙️ Used technologies
 
 - Python,
-- TensforFlow,
+- TensorFlow,
 - Flask,
 - AWS,
 - GoogleColab,
