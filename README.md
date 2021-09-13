@@ -29,29 +29,29 @@ It is estimated that 30 million OCT scans are performed each year, and the analy
 In order to speed up this process we can utilize Machine Learning models to identify scans of patients that might have a disease that can allow ophthalmologists to focus on those patients first.  One of the challenges of having accurate Machine Learning models is the scarcity of well annotated data. In this project, we tackle this problem by utilizing the sinGAN model to generate realistic synthetic data that can be used to increase our training data and improve our prediction results.
 
 Challenges in OCT image analysis:
-- Availability of data,  
-- Labeling requires effort and expertise,
-- Class imbalance,
-- Speed of analysis is important,
-- Algorithms still produce erroneous results and require expert intervention.
+- Availability of data  
+- Labeling requires effort and expertise
+- Class imbalance
+- Speed of analysis is important
+- Algorithms still produce erroneous results and require expert intervention
 
 ### 📖 Related work
 
-- [sinGAN description](https://arxiv.org/abs/1905.00116)
-- [sinGAN with sinGAN-seg publication](https://arxiv.org/abs/2107.00471)
+- [SinGAN description](https://arxiv.org/abs/1905.00116)
+- [sSinGAN with sinGAN-seg publication](https://arxiv.org/abs/2107.00471)
 - [OpticNet-71 reference](https://github.com/SharifAmit/OpticNet-71)
 - [simCLRv2 reference](https://github.com/anoopsanka/retinal_oct)
 
 
 ## ⚙️ Used technologies
 
-- Python,
-- TensorFlow,
-- Flask,
-- AWS,
-- GoogleColab,
-- Kaggle,
-- GitHub.
+- Python
+- TensorFlow
+- Flask
+- AWS
+- GoogleColab
+- Kaggle
+- GitHub
 
 
 <p align="left">
@@ -76,7 +76,7 @@ Challenges in OCT image analysis:
 
 ### Basic data summary
 
-Dataset is imgalanced among different classes:
+Dataset is imbalanced among different classes:
 
 <details open><summary><b>🔍 Image class distribution</b></summary>
   
@@ -142,11 +142,11 @@ Different experimental approaches in setting trainable layers for all or selecte
 |10%|Block 13 and 14 (last 16 layers)|98.14%|0.0662|2min 1s ± 875 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)|
 
 
-### Generating sinGAN images
+### Generating SinGAN images
 
 Multiple new images are generated based on sample images.
 
-<details><summary><b>🔍 New sinGAN image examples</b></summary>
+<details><summary><b>🔍 New SinGAN image examples</b></summary>
   
 ![Normal class examples](/images/singan_generated_normal.JPG)
 ![Normal class examples](/images/singan_generated_cnv.JPG)
