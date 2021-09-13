@@ -19,7 +19,7 @@ def get_category(img):
     """
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(ROOT_DIR + '/static/model/')
-    tflite_model_file = 'XceptionOCT.tflite'
+    tflite_model_file = 'XceptionSinGANOCT.tflite'
 
     # Load TFLite model and allocate tensors.
     with open(path + tflite_model_file, 'rb') as fid:
