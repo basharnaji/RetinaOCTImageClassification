@@ -141,6 +141,12 @@ Different experimental approaches in setting trainable layers for all or selecte
 |10%|Block 14 (last 6 layers)|85.74%|0.4135|2min 3s ± 809 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)|
 |10%|Block 13 and 14 (last 16 layers)|98.14%|0.0662|2min 1s ± 875 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)|
 
+### Final results after improvments
+
+|Training data fraction / trainable layers|Test accuracy|Test Loss (Cross entropy)|
+|-|-|-|
+|10%|92.15%|0.2108|
+|10% + SinGAN|98.86%|0.0328|
 
 ### Generating SinGAN images
 
