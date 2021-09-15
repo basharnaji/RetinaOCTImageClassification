@@ -111,7 +111,7 @@ def plot_GradCAM(class_name, img):
     background = background.resize((224,224), resample=PIL.Image.LANCZOS)
     overlay = overlay.resize((224,224), resample=PIL.Image.LANCZOS )
 
-    new_img = Image.blend(background, overlay, 0.6)
+    new_img = Image.blend(background, overlay, 0.4)
     new_img.save(ROOT_DIR + '/static/images/GradCAM.png')
 
 
