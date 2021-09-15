@@ -7,6 +7,7 @@ import os
 from .core.grad_cam import GradCAM
 from keras.applications import xception
 from tensorflow.python.ops.numpy_ops import np_config
+import PIL
 
 def format_image(image):
     return tf.image.resize(image, [224, 224]) / 255.0
@@ -88,17 +89,30 @@ def plot_GradCAM(class_name, img):
 
     img_array = xception.preprocess_input(input_img)
     img_array = format_image(img_array)
-    #img_array = np.expand_dims(img_array, axis=0)
-    #img_array = img_array.reshape(224,224,3)
-
-    print('********\n', img_array.shape , '\n***********', class_index)
 
     explainer = GradCAM()
-    heat_map = explainer.explain(([img_array], None), model.layers[1], layer_name=last_conv_layer, class_index=class_index,  image_weight=.7 )
+    heat_map = explainer.explain(([img_array], None), model.layers[1], layer_name=last_conv_layer, class_index=class_index,  image_weight=.9 )
 
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(ROOT_DIR + '/static/images/GradCAM.png')
+    path = os.path.join(ROOT_DIR + '/static/images/GradCAMRaw.png')
     plt.imsave(path, heat_map, cmap='viridis')
+
+    try:
+        from PIL import Image
+    except ImportError:
+        import Image
+
+    background = Image.open(ROOT_DIR + '/static/images/output.png')
+    overlay = Image.open(ROOT_DIR + '/static/images/GradCAMRaw.png')
+
+    background = background.convert("RGBA")
+    overlay = overlay.convert("RGBA")
+
+    background = background.resize((224,224), resample=PIL.Image.LANCZOS)
+    overlay = overlay.resize((224,224), resample=PIL.Image.LANCZOS )
+
+    new_img = Image.blend(background, overlay, 0.6)
+    new_img.save(ROOT_DIR + '/static/images/GradCAM.png')
 
 
 def CreateModel():
