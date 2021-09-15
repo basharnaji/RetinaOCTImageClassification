@@ -108,6 +108,7 @@ def heatmap_display(
     heatmap = cv2.resize(heatmap, (original_image.shape[1], original_image.shape[0]))
 
     image = image_to_uint_255(original_image)
+    image = np.array(image)
 
     heatmap = (heatmap - np.min(heatmap)) / (heatmap.max() - heatmap.min())
 

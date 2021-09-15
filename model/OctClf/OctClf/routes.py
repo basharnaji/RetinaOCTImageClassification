@@ -1,7 +1,7 @@
 from flask import request, render_template
 from flask import current_app as app
 
-from .inference import get_category, plot_category, plot_heatmap, plot_GradCAM
+from .inference import get_category, plot_category, plot_GradCAM
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -19,13 +19,12 @@ def eye_disease():
         file = request.files['file']
         file1 = request.files['file']
         # Get category of prediction
-        #category = get_category(img=file)
+        category = get_category(img=file)
         # Plot the category
         plot_category(img=file)
 
         # Plot the HeatMap
-        #plot_heatmap('DME', img=file1)
-        plot_GradCAM('CNV', img=file)
+        plot_GradCAM(category, img=file)
 
         # Render the result template
         return render_template('result.html', category=category)

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import cv2
 import os
-from tf_explain.core.grad_cam import GradCAM
+from .core.grad_cam import GradCAM
 from keras.applications import xception
 from tensorflow.python.ops.numpy_ops import np_config
 
@@ -94,10 +94,11 @@ def plot_GradCAM(class_name, img):
     print('********\n', img_array.shape , '\n***********', class_index)
 
     explainer = GradCAM()
-    heat_map = explainer.explain(([img_array], None), model, layer_name=last_conv_layer, class_index=class_index, image_weight=0.9 )
+    heat_map = explainer.explain(([img_array], None), model.layers[1], layer_name=last_conv_layer, class_index=class_index,  image_weight=.7 )
 
-    #plt.imshow(heat_map)
-    #plt.show()
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(ROOT_DIR + '/static/images/GradCAM.png')
+    plt.imsave(path, heat_map, cmap='viridis')
 
 
 def CreateModel():
@@ -123,4 +124,4 @@ def CreateModel():
 
     model.load_weights(path + saved_weight_file)
 
-    return base_model
+    return model
