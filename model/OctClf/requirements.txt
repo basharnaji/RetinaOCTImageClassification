@@ -3,3 +3,4 @@ tensorflow==2.6.0
 Flask==1.1.2
 opencv-python-headless
 numpy==1.19.5
+tf_explain
