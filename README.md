@@ -164,4 +164,4 @@ Multiple new images are generated based on sample images.
 The application is deployed on following address:  
 http://octclf.eba-yntjrjbn.us-west-2.elasticbeanstalk.com/
 
-![](/images/OCT-sample-test.gif)
+![](/images/OCT_video.gif)
