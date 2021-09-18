@@ -17,9 +17,10 @@ def eye_disease():
             return
         # Read file from upload
         file = request.files['file']
-        file1 = request.files['file']
+
         # Get category of prediction
         category = get_category(img=file)
+
         # Plot the category
         plot_category(img=file)
 
