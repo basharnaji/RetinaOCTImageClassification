@@ -9,8 +9,11 @@ from keras.applications import xception
 from tensorflow.python.ops.numpy_ops import np_config
 import PIL
 
+TARGET_SIZE = 224
+class_names = ['CNV', 'DME', 'DRUSEN', 'NORMAL']
+
 def format_image(image):
-    return tf.image.resize(image, [224, 224]) / 255.0
+    return tf.image.resize(image, [TARGET_SIZE, TARGET_SIZE]) / 255.0
 
 
 def get_category(img):
@@ -53,8 +56,6 @@ def get_category(img):
     predictions_array = interpreter.get_tensor(output_index["index"])
     predicted_label = np.argmax(predictions_array)
 
-    class_names = ['CNV', 'DME', 'DRUSEN', 'NORMAL']
-
     return class_names[predicted_label]
 
 
@@ -84,7 +85,6 @@ def plot_GradCAM(class_name, img):
     last_conv_layer = 'block14_sepconv2_act'
 
     # Converting the class name to a numeric value
-    class_names = ['CNV', 'DME', 'DRUSEN', 'NORMAL']
     class_index = [i for i, x in enumerate(class_names) if x == class_name]
     class_index = class_index[0]
 
@@ -127,8 +127,8 @@ def plot_GradCAM(class_name, img):
     overlay = overlay.convert("RGBA")
 
     # Overlaying the GradCAM output onto the original level and setting the opacity
-    background = background.resize((224,224), resample=PIL.Image.LANCZOS)
-    overlay = overlay.resize((224,224), resample=PIL.Image.LANCZOS )
+    background = background.resize((TARGET_SIZE,TARGET_SIZE), resample=PIL.Image.LANCZOS)
+    overlay = overlay.resize((TARGET_SIZE,TARGET_SIZE), resample=PIL.Image.LANCZOS )
 
     new_img = Image.blend(background, overlay, 0.4)
     new_img.save(ROOT_DIR + '/static/images/GradCAM.png')
@@ -143,8 +143,8 @@ def CreateModel():
     saved_weight_file = 'oct_singan.h5'
 
     # Creating the model based on Xception Network
-    input_layer = tf.keras.Input(shape=(224, 224, 3))
-    base_model =  xception.Xception(include_top=False, weights="imagenet", input_shape=(224, 224, 3))
+    input_layer = tf.keras.Input(shape=(TARGET_SIZE, TARGET_SIZE, 3))
+    base_model =  xception.Xception(include_top=False, weights="imagenet", input_shape=(TARGET_SIZE, TARGET_SIZE, 3))
     base_model.trainable = True
 
     x = base_model(input_layer)
